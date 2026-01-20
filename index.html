@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Creative - Designing & Trading </title>
+  
+    
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            
+            line-height: 1.6;
+            color: #333;
+        }
+
+        h1 {
+            font-family: 'Bingo Dilan',sans-serif;
+            font-weight: 700;
+
+        }
+         
+         @font-face {
+            font-family: 'Bingo Dilan';
+            src: url('./fonts/Bingo Dilan.ttf') format('truetype');
+        }
+
+
+        /* Header Styles */
+        header {
+            background: #fff;
+            padding: 1.5rem 5%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-icon::before,
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            background: #fff;
+            width: 3px;
+            height: 20px;
+        }
+
+        .logo-icon::before {
+            transform: rotate(45deg);
+        }
+
+        .logo-icon::after {
+            transform: rotate(-45deg);
+        }
+
+        .logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .logo-subtext {
+            font-size: 0.7rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #FFD700;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #FFD700;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            transition: 0.3s;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background-color: #13223d;
+            padding: 8rem 5% 4rem;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            overflow: hidden; 
+        }
+
+        /* Hero Background Slideshow */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-bg .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: heroFade 15s infinite; 
+        }
+
+        .hero-bg .slide:nth-child(1) { animation-delay: 0s; }
+        .hero-bg .slide:nth-child(2) { animation-delay: 5s; }
+        .hero-bg .slide:nth-child(3) { animation-delay: 10s; }
+
+
+        @keyframes heroFade {
+            0% { opacity: 0; }
+            5% { opacity: 0.3; }   /* Low Opacity for Background */
+            33.33% { opacity: 0.3; } 
+            38.33% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* Hero Content */
+        .hero h1, 
+        .hero p, 
+        .hero .cta-button, 
+        .hero .service-cards {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.8);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            margin-bottom: 3rem;
+        }
+
+        .cta-button:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: #fff;
+        }
+
+        /* --- SERVICE CARDS (Grid in Hero) --- */
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            /* Fixed height to contain the absolute slideshow */
+            height: 320px; 
+            display: flex;
+            align-items: flex-end; /* Push content to bottom */
+        }
+
+        /* Hover Overlay */
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 45px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        /* --- INNER CARD SLIDESHOW STYLES --- */
+        .card-slideshow {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Behind content */
+        }
+
+        .card-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: transform 0.4s; /* For hover zoom */
+            animation: cardFade 12s infinite; /* 3 images x 4 seconds */
+        }
+
+        /* Hover Effect for Slideshow Images */
+        .service-card:hover .card-slide {
+            transform: scale(1.05);
+        }
+
+        /* Animation Delays for 3 images in a loop */
+        .card-slide:nth-child(1) { animation-delay: 0s; }
+        .card-slide:nth-child(2) { animation-delay: 4s; }
+        .card-slide:nth-child(3) { animation-delay: 8s; }
+
+        @keyframes cardFade {
+            0% { opacity: 0; }
+            10% { opacity: 1; }
+            33.33% { opacity: 1; }
+            43.33% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* Content inside the card */
+        .service-card-content {
+            width: 100%;
+            padding: 1.5rem;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card-content h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 5%;
+            background: #fff;
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .about-content p {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            color: #4a3f5c;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .about-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Decorative Bar */
+        .decorative-bar {
+            height: 40px;
+            background: linear-gradient(135deg, #FFD700 0%, #8B7355 50%, #4a3f5c 100%);
+        }
+
+        /* Services Section (Main) */
+        .services {
+            padding: 5rem 5%;
+            background: #b69b61;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #f6f1e7;
+        }
+
+        .services-subtitle {
+            text-align: center;
+            color: #f6f1e7;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-item {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .service-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .service-item-content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .service-item-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .service-item-content p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Detailed Services Categories */
+        .detailed-services {
+            max-width: 1400px;
+            margin: 4rem auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-category-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            border-bottom: 4px solid #FFD700;
+            transition: all 0.3s ease;
+        }
+
+        .service-category-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .service-category-card h3 {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .service-category-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-category-card ul li {
+            color: #13223d;
+            padding: 0.6rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .service-category-card ul li::before {
+            content: '•';
+            color: #242423;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: 0.3rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 5rem 5%;
+            background: #fff;
+        }
+
+        .gallery h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .gallery-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-item:nth-child(2) {
+            grid-row: span 2;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 5%;
+            background: linear-gradient(135deg, #13223d, #13223d);
+            color: #fff;
+        }
+
+        .contact-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .stay-updated {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .stay-updated h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .stay-updated p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .submit-button {
+            background: #464253;
+            color: #fff;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .submit-button:hover {
+            background: #2d1d5a;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .contact-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-section p {
+            margin-bottom: 0.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+
+        footer {
+            background: #13223d;
+            padding: 1.5rem 5%;
+            text-align: center;
+            color: rgba(255,255,255,0.8);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background: #fff;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+                padding: 2rem 0;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                justify-content: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .service-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .hero-main-image {
+                max-width: 600px;
+                width: 100%;
+                height: auto;
+                border-radius: 15px;
+                 box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+                filter: brightness(1.3); 
+}
+
+            .stats {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="finallogo.png" alt="Company Logo" style="height: 72px; margin-right: 10px;">
+                <div>
+                    <div class="logo-text" style="line-height: 0.9; font-weight: 775;">
+                     الغانت كريتيف <br> ELEGANT CREATIVE</div>
+                    <div class="logo-subtext" style="padding-left: 2px; color: #9f8354; line-height: 0.8; letter-spacing: 4px; font-weight: 700;"><br>   DESIGNING & TRADING</div>
+                </div>
+            </div>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        
+        <div class="hero-bg">
+            <img src="bs2.jpeg" class="slide" alt="Background Slide 1">
+            <img src="bs1.jpeg" class="slide" alt="Background Slide 2">
+            <video class="slide" autoplay muted loop playsinline>
+                <source src="bs3.mp4" type="video/mp4">
+            </video>
+        </div>
+
+         <div class="hero-image-container" style="filter: brightness(2);">
+            <img src="hero text.png" alt="Hero Image" class="hero-main-image">
+        </div>
+        <a href="#contact" class="cta-button">Get Started</a>
+        
+        <div class="service-cards">
+            
+            <div class="service-card">
+                <div class="card-slideshow">
+                    <img src="digital offset.jpeg" class="card-slide" alt="Digital Print">
+                    <img src="30.jpeg" class="card-slide" alt="Printing">
+                    <img src="30.jpeg" class="card-slide" alt="Offset">
+                </div>
+                <div class="service-card-content">
+                    <h3 style="color: rgb(8, 2, 51);">Digital and offset printing services.</h3>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="card-slideshow">
+                    <img src="38.jpeg" class="card-slide" alt="Signage 1">
+                    <img src="sign (3).jpeg" class="card-slide" alt="Signage 2">
+                    <img src="sign (7).jpeg" class="card-slide" alt="Signage 3">
+                </div>
+                <div class="service-card-content">
+                    <h3>Indoor & Outdoor Signage</h3>
+                </div>
+            </div>
+
+            <div class="service-card">
+                <div class="card-slideshow">
+                    <img src="corp.jpeg" class="card-slide" alt="Gifts 1">
+                    <img src="cg.jpeg" class="card-slide" alt="Gifts 2">
+                    <img src="36.jpeg" class="card-slide" alt="Gifts 3">
+                </div>
+                <div class="service-card-content">
+                    <h3>Corporate Gifts</h3>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="about-container">
+            <div class="about-content">
+                <h2 style="color: #9f8354;">WHAT WE DO</h2>
+                <p>We provide complete branding and visual communication solutions for businesses, including digital and offset printing,
+                 indoor and outdoor signage, advertising materials, and promotional items. We also specialize in customized corporate gifts, 
+                 helping brands create memorable impressions.<br><br> Our services cover every stage of a project—from concept and design to fabrication
+                 and installation—ensuring innovative, high-quality, and trend-focused solutions tailored to each client’s needs.</p>
+                
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=800&h=600&fit=crop" alt="Printing materials">
+            </div>
+        </div>
+    </section>
+
+    <div class="decorative-bar"></div>
+
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <p class="services-subtitle">From vibrant prints to bold signage, we bring your ideas to life.</p>
+        <div class="services-grid">
+            <div class="service-item">
+                <img src="sign (6).jpeg" alt="Branding">
+                <div class="service-item-content">
+                    <h3>Branding</h3>
+                    <p>Custom corporate branding solutions that make your business stand out.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="package.jpeg" alt="package">
+                <div class="service-item-content">
+                    <h3>Packaging</h3>
+                    <p>Custom corporate packaging solutions that make your business stand out.</p>
+                </div>
+            </div>
+
+            <div class="service-item">
+                <img src="uniforms.jpeg" alt="Uniforms">
+                <div class="service-item-content">
+                    <h3>Uniforms</h3>
+                    <p>Custom corporate uniforms that enhance your brand identity.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <img src="30.jpeg" alt="Printing">
+                <div class="service-item-content">
+                    <h3>Printing</h3>
+                    <p>Digital and offset printing tailored for sharp, vibrant marketing materials.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="detailed-services">
+            <div class="service-category-card">
+                <h3>Printing & Packaging</h3>
+                <ul>
+                    <li>Business Cards & Letterheads</li>
+                    <li>Brochures & Flyers</li>
+                    <li>Product Packaging Boxes</li>
+                    <li>Paper Bags & Catalogs</li>
+                    <li>NCR Books & Posters</li>
+                </ul>
+            </div>
+
+            <div class="service-category-card">
+                <h3>Corporate Gifts</h3>
+                <ul>
+                    <li>Branded Pens & Mugs</li>
+                    <li>Notebooks & Diaries</li>
+                    <li>USB Flash Drives & Power Banks</li>
+                    <li>Travel Adapters</li>
+                    <li>Customized Gift Sets</li>
+                </ul>
+            </div>
+
+            <div class="service-category-card">
+                <h3>Indoor & Outdoor Signages</h3>
+                <ul>
+                    <li>3D Letter Signage</li>
+                    <li>ACP Sign Boards</li>
+                    <li>LED Illuminated Signs</li>
+                    <li>Reception & Lobby Signs</li>
+                    <li>Wayfinding & Directional Signs</li>
+                </ul>
+            </div>
+
+            <div class="service-category-card">
+                <h3>Uniforms & Jerseys</h3>
+                <ul>
+                    <li>Polo T-shirts & Formal Shirts</li>
+                    <li>Coveralls & Safety Vests</li>
+                    <li>Caps & Hats</li>
+                    <li>Chef Uniforms & Aprons</li>
+                    <li>Sport Jerseys</li>
+                </ul>
+            </div>
+
+            <div class="service-category-card">
+                <h3>Event & Exhibition</h3>
+                <ul>
+                    <li>Exhibition Booth Setup</li>
+                    <li>Roll-up & Pop-up Banners</li>
+                    <li>Backdrop & Stage Branding</li>
+                    <li>Promotional Counters</li>
+                    <li>Digital Screens / LED Displays</li>
+                </ul>
+            </div>
+
+            <div class="service-category-card">
+                <h3>ID Cards & Stationery</h3>
+                <ul>
+                    <li>PVC ID Cards & Smart Cards</li>
+                    <li>Lanyards & Badge Reels</li>
+                    <li>Rubber Stamps</li>
+                    <li>Desk Name Plates</li>
+                    <li>Mouse Pad Branding</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery" id="portfolio">
+        <h2>Gallery</h2>
+        <p class="gallery-subtitle">Snapshots of our vibrant branding projects</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="branding (5).jpeg" alt="Gallery 1">
+            </div>
+            <div class="gallery-item">
+                <img src="branding (8).jpeg" alt="Gallery 2">
+            </div>
+            <div class="gallery-item">
+                <img src="sign (7).jpeg" alt="Gallery 3">
+            </div>
+            <div class="gallery-item">
+                <img src="sign (2).jpeg" alt="Gallery 4">
+            </div>
+            <div class="gallery-item">
+                <img src="print.jpeg" alt="Gallery 5">
+            </div>
+            <div class="gallery-item">
+                <img src="branding.jpeg" alt="Gallery 5">
+            </div>
+            <div class="gallery-item">
+                <img src="branding cufe.jpeg" alt="Gallery 5">
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="stay-updated">
+                <h2>Stay Updated</h2>
+                <p>Get the latest on our printing services</p>
+                <form class="newsletter-form">
+                    <div class="form-group">
+                        <label>Your Full Name</label>
+                        <input type="text" placeholder="Enter name here">
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <div class="contact-section">
+                    <h3>Contact</h3>
+                    <p>Reach us for quick, quality printing solutions.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">f</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="TikTok">🎵</a>
+                        <a href="#" aria-label="Twitter">🐦</a>
+                    </div>
+                </div>
+                <div class="contact-section">
+                    <h3>EMAIL</h3>
+                    <p>+974 6691 7674 , 7069 8355</p>
+                    <p>info@elegantcreativeqatar.com</p>
+                </div>
+                <div class="contact-section">
+                    <h3>PHONE</h3>
+                    <div class="contact-form">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" placeholder="Enter full name">
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
